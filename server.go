@@ -5,17 +5,22 @@ import (
 	"net/http"
 )
 
+type httpHandler struct {
+	message string
+}
+
+func (h httpHandler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
+	fmt.Fprint(resp, h.message)
+}
+
 func main() {
 
-	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "hello.html")
-	})
-	http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "About Page")
-	})
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Index Page")
-	})
+	h1 := httpHandler{message: "Index"}
+	h2 := httpHandler{message: "About"}
+
+	http.Handle("/", h1)
+	http.Handle("/about", h2)
+
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":8181", nil)
 }
