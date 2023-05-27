@@ -7,14 +7,11 @@ import (
 
 func main() {
 
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
-
 	http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "About Page")
+		http.ServeFile(w, r, "static/about.html")
 	})
-	http.HandleFunc("/contact", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Contact Page")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/index.html")
 	})
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":8181", nil)
