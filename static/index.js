@@ -7,15 +7,15 @@ let isPaused = true;
 
 const circleContent = document.querySelector("#circle-content");
 const timerDisplay = document.querySelector(".timerDisplay");
-const startBtn = document.querySelector("#start");
+const start = document.querySelector("#start");
 const resetBtn = document.querySelector("#reset");
 const workMin = document.querySelector("#work-min");
 const breakMin = document.querySelector("#break-min");
 
 const alarm = document.createElement('audio');
-alarm.setAttribute("src", "http://localhost/Ringtones/bell-ringing-05.mp3");
+alarm.setAttribute("src", "samsung_galaxy_chime_time.mp3");
 
-startBtn.addEventListener('click', () => {
+start.addEventListener('click', () => {
     clearInterval(countdown);
     isPaused = !isPaused;
     if (!isPaused) {
@@ -67,11 +67,11 @@ startBtn.addEventListener('click', () => {
   
   function buttonDisplay() {
     if (isPaused && countdown === 0) {
-      startBtn.textContent = "START";
+      start.textContent = "START";
     } else if (isPaused && countdown !== 0) {
-      startBtn.textContent = "Continue";
+      start.textContent = "Continue";
     } else {
-      startBtn.textContent = "Pause";
+      start.textContent = "Pause";
     }
   }
   

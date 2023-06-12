@@ -2,19 +2,20 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
 func main() {
+	// Устанавливаем маршрут для обработки запросов к файлам статики
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// Устанавливаем маршрут для обработки запроса к основной странице
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "index.html")
 	})
 
-	// Обработчик для CSS файлов
-	http.HandleFunc("/styles.css", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "styles.css")
-	})
-
-	fmt.Println("Server is listening...")
-	http.ListenAndServe(":8282", nil)
+	fmt.Println("Сервер запущен на порту 8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }

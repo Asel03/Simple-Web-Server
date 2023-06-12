@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title> 
+            Pomodoro Timer
+      </title>
+      <link rel="icon" type="image/png" href="static/logo.png">
+      <link rel="stylesheet" href="static/styles.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+</head>
+<body>
+      <div class="container">
+            <div>
+                  <h1>Pomodoro Timer</h1> 
+            </div>
+            <div id="circle">
+                  <div id="circle-content"></div> 
+                  <div class="timerDisplay">25:00</div>
+                  <button id="start" class="btn">START</button>
+            </div>
+            <div class="settings">
+                  <div id="work">
+                        <p>Work Duration</p>
+                        <button class="btn plus" id="work-plus">+</button>
+                        <div id="work-min"><span>25</span> mins</div>
+                        <button class="btn minus" id="work-minus">-</button>
+                  </div>
+                        
+                  <button id="reset" class="btn">RESET</button>
+                        
+                  <div id="break">
+                        <p>Break Duration</p>
+                        <button class="btn plus" id="break-plus">+</button>
+                        <div id="break-min"><span>5</span> mins</div>
+                        <button class="btn minus" id="break-minus">-</button>
+                  </div>
+            </div>
+      </div>
+      <script src="static/index.js"></script
+</body>
+</html>
